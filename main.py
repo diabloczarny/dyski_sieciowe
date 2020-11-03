@@ -36,7 +36,6 @@ while True:
             a.append(drive['local'][0].lower())
 
     if subprocess.call(rf'{litera}', shell=True) == 0:
-
         if host_ip==adres:
             for d in dyski:
                 if d in a:
@@ -44,11 +43,8 @@ while True:
             for temp in a:
                 subprocess.call(rf'net use {temp}: /delete', shell=True)
             for d in dyski:
-                # print(d)
                 for x in sciezki["sciezki"]:
-                    # print(d,x)
                     if d == x[0]:
-                        # print(1,d,x)
                         if subprocess.call(rf'{d}:', shell=True) == 0:
                             if x[1:] == win32wnet.WNetGetConnection(f'{d}:'):
                                 pass
@@ -56,13 +52,8 @@ while True:
                                 subprocess.call(rf'net use {d}: /delete', shell=True)
                                 time.sleep(15)
                                 subprocess.call(rf'net use {d}: {x[1:]}', shell=True)
-
                         else:
                             subprocess.call(rf'net use {d}: {x[1:]}', shell=True)
-                    else:
-                        pass
-            else:
-                pass  # jesli adres sie nie zgadza nic nie robi
     else:
         subprocess.call(rf'net use {litera} {sciezka}', shell=True)
     a=[]
